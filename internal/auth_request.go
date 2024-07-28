@@ -4,7 +4,10 @@ import (
 	"encoding/xml"
 	"fmt"
 	"math/rand"
+	"os"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type AuthRequest struct {
@@ -24,13 +27,19 @@ type Header struct {
 func RequestAuth() {
 	uid := rand.Uint32()
 	dt := time.Now()
-	gt := dt.Format("2006-07-25") + "T" + time.Now().Format("15:04:16")
+	gt := dt.Format("2006-01-02") + "T" + time.Now().Format("15:04:16")
 	timein := time.Now().Add(time.Hour * 18)
-	fmt.Println(timein.Format("2006-01-02") + "T" + timein.Format("15:04:16"))
+	ed := timein.Format("2006-01-02") + "T" + timein.Format("15:04:16")
 
-	newHead := &Header{UniqueID: uid, GenerationTime: gt, ExpirationTime: "2024-07-26T10:29:25"}
+	newHead := &Header{UniqueID: uid, GenerationTime: gt, ExpirationTime: ed}
 	newReq := &AuthRequest{Version: "1.0", Header: newHead, Service: "wtcmxa"}
 
 	out, _ := xml.MarshalIndent(newReq, " ", " ")
 	fmt.Println(xml.Header + string(out))
+	err := os.WriteFile("MiLoginTicketRequest.xml", out, 0777)
+	if err != nil {
+		log.Error(err)
+		return
+	}
+
 }
