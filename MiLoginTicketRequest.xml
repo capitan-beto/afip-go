@@ -1,8 +1,8 @@
- <loginTicketRequest version="1.0">
-  <Header>
-   <uniqueId>1185542430</uniqueId>
-   <generationTime>2024-07-27T22:30:76</generationTime>
-   <expirationTime>2024-07-28T16:30:76</expirationTime>
-  </Header>
-  <service>wtcmxa</service>
+ <loginTicketRequest>
+  <header>
+   <uniqueId>888652118</uniqueId>
+   <generationTime>2024-10-14T21:10:23</generationTime>
+   <expirationTime>2024-10-15T15:10:23</expirationTime>
+  </header>
+  <service>wsmtxca</service>
  </loginTicketRequest>
