@@ -6,4 +6,5 @@ func main() {
 	internal.RequestAuth()
 	internal.GenerateCMS()
 	internal.CreateLoginRequest()
+	internal.MakeRequest()
 }

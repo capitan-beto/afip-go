@@ -37,6 +37,7 @@ func RequestAuth() {
 
 	out, _ := xml.MarshalIndent(newReq, " ", " ")
 	fmt.Println(xml.Header + string(out))
+
 	err := os.WriteFile("MiLoginTicketRequest.xml", out, 0777)
 	if err != nil {
 		log.Error(err)
