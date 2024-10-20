@@ -1,8 +1,8 @@
  <loginTicketRequest>
   <header>
-   <uniqueId>2869326947</uniqueId>
-   <generationTime>2024-10-19T18:37:25</generationTime>
-   <expirationTime>2024-10-20T12:37:25</expirationTime>
+   <uniqueId>2034382364</uniqueId>
+   <generationTime>2024-10-20T12:00:01</generationTime>
+   <expirationTime>2024-10-21T06:00:01</expirationTime>
   </header>
   <service>wsmtxca</service>
  </loginTicketRequest>

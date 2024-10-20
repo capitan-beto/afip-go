@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"os/exec"
 
-	"github.com/sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 func GenerateCMS() {
+	fmt.Println("Step 2: generating ticket request's cms")
 
 	cmd := exec.Command("openssl", "cms",
 		"-sign", "-in", "MiLoginTicketRequest.xml",
@@ -17,11 +18,11 @@ func GenerateCMS() {
 		"-nodetach", "-outform", "PEM",
 	)
 
-	stdout, err := cmd.Output()
+	_, err := cmd.Output()
 	if err != nil {
-		logrus.Error(err)
+		log.Error(err)
 		return
 	}
 
-	fmt.Println(string(stdout))
+	fmt.Println("Step 2: cms generated successfully")
 }

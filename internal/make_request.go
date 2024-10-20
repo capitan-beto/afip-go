@@ -10,6 +10,8 @@ import (
 )
 
 func MakeRequest() {
+	fmt.Println("Step 4: send login request to AFIP Web Services")
+
 	file, err := os.Open("requestLoginCms.xml")
 	if err != nil {
 		log.Error(err)
@@ -17,9 +19,7 @@ func MakeRequest() {
 	}
 	defer file.Close()
 
-	fmt.Println(file)
-
-	fmt.Println("Creating http request to AFIP Web Services")
+	fmt.Println("Step 4: Sending http request to AFIP Web Services")
 	req, err := http.NewRequest("POST", "https://wsaahomo.afip.gov.ar/ws/services/LoginCms", file)
 	if err != nil {
 		log.Error(err)
@@ -50,5 +50,8 @@ func MakeRequest() {
 		return
 	}
 
-	fmt.Println("RESPONSE: ", string(body))
+	fmt.Println("Step 4: request sent")
+
+	fmt.Println(string(body))
+	ParseResponse(body)
 }

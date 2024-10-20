@@ -27,6 +27,8 @@ type LoginCms struct {
 }
 
 func CreateLoginRequest() {
+	fmt.Println("Step 3: append cms into xml login request")
+
 	soapenv := "http://schemas.xmlsoap.org/soap/envelope/"
 	wsaa := "http://wsaa.view.sua.dvadac.desein.afip.gov"
 
@@ -42,12 +44,14 @@ func CreateLoginRequest() {
 
 	out, _ := xml.MarshalIndent(newReq, " ", "  ")
 	res := EscapeXML(string(out))
-	fmt.Println(res)
+
 	err = os.WriteFile("requestLoginCms.xml", []byte(res), 0777)
 	if err != nil {
 		log.Error(err)
 		return
 	}
+
+	fmt.Println("Step 2: login cms created successfully")
 }
 
 func GetCMS() (string, error) {
